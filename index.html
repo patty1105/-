@@ -2,628 +2,713 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>炸裂首爾爆破局｜友情大測驗</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>代課指南｜徐薇英文－瀚銘分校</title>
+
   <style>
     :root{
-      --bg:#0b0b10;
-      --text:#f4f4f7;
-      --muted:#a7a7b3;
-      --good:#2ecc71;
-      --bad:#ff5a5f;
-      --accent:#8b5cf6;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius: 16px;
+      --bg1:#070a13;
+      --bg2:#0b1020;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.04);
+      --text:#eef2ff;
+      --muted: rgba(238,242,255,.72);
+      --line: rgba(255,255,255,.12);
+      --accent:#7aa2ff;
+      --accent2:#7dffcf;
+      --warn:#ffb74d;
+      --shadow: 0 14px 35px rgba(0,0,0,.45);
+      --radius: 18px;
+      --radius2: 14px;
     }
-    *{box-sizing:border-box}
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
     body{
       margin:0;
-      font-family: system-ui, -apple-system, "PingFang TC", "Noto Sans TC", Arial, sans-serif;
-      background: radial-gradient(1200px 800px at 20% -10%, rgba(139,92,246,.25), transparent 60%),
-                  radial-gradient(900px 700px at 100% 0%, rgba(46,204,113,.12), transparent 55%),
-                  var(--bg);
-      color:var(--text);
-      line-height:1.55;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, "Noto Sans TC", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1000px 600px at 18% -10%, rgba(122,162,255,.30), transparent 60%),
+        radial-gradient(900px 600px at 90% 10%, rgba(125,255,207,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      line-height:1.75;
     }
-    .container{ max-width: 920px; margin: 0 auto; padding: 18px 14px 132px; }
-    header{ padding: 12px 8px 4px; }
-    h1{ margin: 4px 0 6px; font-size: 24px; letter-spacing: .3px; }
-    .muted{ color:var(--muted); margin:0 0 10px; font-size: 14px; }
-    .tip{
-      margin: 10px 0 14px;
-      padding: 12px 12px;
-      border:1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.04);
-      border-radius: var(--radius);
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .meta{ display:flex; flex-wrap:wrap; gap:8px; margin: 10px 0 0; }
-    .chip{
-      font-size: 12px;
-      color: rgba(255,255,255,.9);
-      background: rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.10);
-      padding: 6px 10px;
+    a{ color: var(--accent); text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+
+    .wrap{ max-width: 1050px; margin: 0 auto; padding: 26px 18px 64px; }
+
+    /* Header */
+    header{
+      position: sticky; top: 14px; z-index: 50;
+      display:flex; gap:16px; align-items:center; justify-content:space-between;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      background: rgba(12,16,32,.62);
+      backdrop-filter: blur(12px);
       border-radius: 999px;
+      box-shadow: var(--shadow);
+    }
+    .brand{ display:flex; flex-direction:column; gap:2px; padding-left:6px; }
+    .brand b{ font-size: 14px; letter-spacing:.2px; }
+    .brand span{ font-size: 12px; color: var(--muted); }
+
+    nav{ display:flex; gap: 8px; flex-wrap: wrap; justify-content:flex-end; }
+    nav a{
+      font-size: 13px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      color: var(--text);
+      opacity:.92;
+    }
+    nav a:hover{
+      border-color: var(--line);
+      background: rgba(255,255,255,.06);
+      text-decoration:none;
     }
 
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border: 1px solid rgba(255,255,255,.08);
+    /* Hero */
+    .hero{
+      margin-top: 18px;
+      padding: 24px 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
       border-radius: var(--radius);
-      padding: 14px 14px 10px;
-      margin: 12px 0;
       box-shadow: var(--shadow);
       overflow:hidden;
+      position: relative;
     }
-    .q-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom: 10px; }
-    .q-title{ font-weight: 950; font-size: 16px; margin:0; }
-    .pill{
-      flex:0 0 auto;
-      font-size: 12px;
-      color: rgba(255,255,255,.88);
-      background: rgba(139,92,246,.22);
-      border: 1px solid rgba(139,92,246,.35);
-      padding: 4px 10px;
+    .hero:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(500px 220px at 20% 20%, rgba(122,162,255,.25), transparent 60%),
+                  radial-gradient(420px 200px at 85% 10%, rgba(125,255,207,.16), transparent 60%);
+      pointer-events:none;
+    }
+    .hero > *{ position: relative; }
+    .hero h1{ margin:0 0 8px; font-size: 28px; letter-spacing:.2px; }
+    .hero p{ margin:0; color: var(--muted); max-width: 88ch; }
+    .chips{ margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap; }
+    .chip{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 7px 12px;
       border-radius: 999px;
-      white-space: nowrap;
-    }
-    .subpill{
-      display:inline-block;
-      margin-top: 8px;
-      font-size: 12px;
-      color: rgba(255,255,255,.78);
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.10);
-      padding: 3px 10px;
-      border-radius: 999px;
-    }
-
-    .opt{
-      display:flex; align-items:flex-start; gap:10px;
-      padding: 12px 12px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.08);
+      border: 1px solid var(--line);
       background: rgba(255,255,255,.03);
-      margin: 10px 0;
-      cursor:pointer;
-      user-select:none;
-      transition: transform .05s ease, background .15s ease, border-color .15s ease;
+      color: var(--muted);
+      font-size: 12px;
     }
-    .opt:active{ transform: scale(.99); }
-    .opt:hover{ background: rgba(255,255,255,.05); }
-    .opt input{ margin-top: 2px; transform: scale(1.15); }
-    .opt-text{ flex:1; font-size: 15px; }
 
-    .status{
-      margin-top: 10px;
+    /* Your content classes (keep same names) */
+    .card{
+      margin-top:18px;
+      padding:18px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .card h3{ margin:0 0 10px; font-size: 18px; }
+    .meta{ margin: -6px 0 0; color: var(--muted); font-size: 13px; }
+
+    .divider{ height:1px; background: var(--line); margin: 14px 0; }
+
+    .steps{ display:grid; gap:12px; margin-top: 12px; }
+    .step{
+      border: 1px solid var(--line);
+      background: var(--card2);
+      border-radius: var(--radius2);
+      padding: 14px;
+    }
+    .step h4{ margin:0 0 6px; font-size: 16px; }
+    .step ol{ margin:8px 0 0; padding-left: 20px; color: var(--muted); }
+    .step ul{ color: var(--muted); }
+
+    .note, .warn{
+      margin-top: 12px;
       padding: 10px 12px;
       border-radius: 14px;
-      background: rgba(255,255,255,.03);
-      border: 1px dashed rgba(255,255,255,.14);
-      display:none;
       font-size: 14px;
       color: var(--muted);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
     }
-    .status strong{ color: var(--text); }
-    .status .tag{
-      display:inline-block;
-      margin-left: 8px;
-      padding: 2px 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-      color: rgba(255,255,255,.85);
+    .note{ border-left: 3px solid rgba(125,255,207,.85); }
+    .warn{ border-left: 3px solid rgba(255,183,77,.95); }
+
+    .twoCol{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
     }
-    .tag.good{ border-color: rgba(46,204,113,.45); background: rgba(46,204,113,.14); }
-    .tag.bad{ border-color: rgba(255,90,95,.45); background: rgba(255,90,95,.14); }
 
-    .card.correct{ border-color: rgba(46,204,113,.35); background: linear-gradient(180deg, rgba(46,204,113,.12), rgba(255,255,255,.03)); }
-    .card.wrong{ border-color: rgba(255,90,95,.35); background: linear-gradient(180deg, rgba(255,90,95,.10), rgba(255,255,255,.03)); }
-    .opt.correctAns{ border-color: rgba(46,204,113,.55); background: rgba(46,204,113,.14); }
-    .opt.chosenWrong{ border-color: rgba(255,90,95,.55); background: rgba(255,90,95,.14); }
-
-    .result{
-      margin-top: 14px;
-      padding: 14px 14px;
-      border-radius: var(--radius);
-      border:1px solid rgba(255,255,255,.10);
-      background: linear-gradient(180deg, rgba(139,92,246,.16), rgba(255,255,255,.03));
-      box-shadow: var(--shadow);
-      display:none;
+    /* Gallery & media */
+    .gallery{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
     }
-    .score{ font-size: 22px; font-weight: 950; margin: 0 0 6px; }
-    .titleline{ margin: 10px 0 6px; font-weight: 950; font-size: 18px; }
-    .comment{ margin: 0; color: rgba(255,255,255,.92); }
-    .mini{ margin-top:10px; color: var(--muted); font-size: 13px; }
-
-    .warn{
-      color: #ffd6d8;
-      background: rgba(255,90,95,.12);
-      border:1px solid rgba(255,90,95,.25);
-      padding: 10px 12px;
+    .gallery img{
+      width:100%;
       border-radius: 14px;
-      margin: 10px 0 0;
-      display:none;
-      font-weight: 900;
+      border: 1px solid var(--line);
+      display:block;
+      background: rgba(0,0,0,.18);
     }
-
-    .dock{
-      position: fixed; left: 0; right: 0; bottom: 0;
-      padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
-      background: rgba(10,10,16,.88);
-      backdrop-filter: blur(10px);
-      border-top: 1px solid rgba(255,255,255,.08);
-      z-index: 10;
-    }
-    .dock-inner{
-      max-width: 920px;
-      margin: 0 auto;
+    .ph{
+      border:1px dashed rgba(255,255,255,.22);
+      border-radius: 14px;
+      padding: 16px;
+      background: rgba(255,255,255,.03);
+      color: rgba(238,242,255,.62);
+      text-align:center;
+      min-height: 92px;
       display:flex;
-      gap:10px;
       align-items:center;
-      justify-content: space-between;
+      justify-content:center;
     }
-    .btn{
-      flex:1;
-      border:0;
+
+    .videoWrap{
+      margin-top: 12px;
       border-radius: 14px;
-      padding: 12px 14px;
-      font-size: 15px;
-      font-weight: 900;
-      cursor:pointer;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.22);
+    }
+    .ratio{ position: relative; width:100%; padding-top: 56.25%; }
+    .ratio iframe{
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      border:0;
+    }
+
+    /* Small polish */
+    b{ color: rgba(238,242,255,.95); }
+    p{ margin: 10px 0 0; }
+    h4{ letter-spacing:.1px; }
+
+    footer{
+      margin-top: 18px;
+      color: rgba(238,242,255,.60);
+      font-size: 13px;
+      text-align:center;
+      opacity:.95;
+    }
+    .toplink{
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(12,16,32,.70);
+      backdrop-filter: blur(12px);
       color: var(--text);
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: var(--shadow);
+      cursor:pointer;
     }
-    .btn.primary{
-      background: linear-gradient(180deg, rgba(139,92,246,.9), rgba(139,92,246,.65));
-      border-color: rgba(139,92,246,.55);
+
+    /* Responsive */
+    @media (max-width: 820px){
+      header{ position: static; border-radius: var(--radius); }
+      nav{ justify-content:flex-start; }
+      .twoCol{ grid-template-columns: 1fr; }
     }
-    .btn:disabled{ opacity: .55; cursor:not-allowed; }
-    .btn.small{ flex:0 0 auto; width: 110px; }
-    @media (min-width: 700px){
-      h1{ font-size: 28px; }
-      .q-title{ font-size: 17px; }
-      .opt-text{ font-size: 16px; }
-      .btn.small{ width: 140px; }
+    @media (max-width: 680px){
+      .gallery{ grid-template-columns: 1fr; }
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <header>
-      <h1>💥 炸裂首爾爆破局｜友情大測驗（八卦加強版）</h1>
-      <p class="muted">提交後會顯示每題「你選的」與「正確答案」，並給你一個專屬稱號＋你最強的八卦類型。</p>
-      <div class="tip">
-        規則：不准翻群、不准問人、不准事後爆破。<br>
-        提示：題目偏內梗，答對很可疑（尤其是官網省 2 元那題）。
+  <div class="wrap">
+    <header id="top">
+      <div class="brand">
+        <b>代課指南（給薇薇版）</b>
+        <span>徐薇英文－瀚銘分校｜H1 / H3</span>
       </div>
-      <div class="meta">
-        <span class="chip" id="chipCount">題數：—</span>
-        <span class="chip">計分：每題 1 分</span>
-        <span class="chip">結果：分數＋稱號＋類型分析</span>
-      </div>
+      <nav>
+        <a href="#location">地點</a>
+        <a href="#steps">步驟</a>
+        <a href="#schedule">課表</a>
+        <a href="#content">內容</a>
+        <a href="#common-flow">共同流程</a>
+        <a href="#h1-detail">H1</a>
+        <a href="#h3-detail">H3</a>
+        <a href="#wrap-up">收尾</a>
+      </nav>
     </header>
 
-    <div id="quiz"></div>
+    <section class="hero">
+      <h1>今天代課就照這份做</h1>
+      <p>不用備課，你主要做：拿點名本 → 上二樓拿文具考卷 → 點名簽名 → 發考卷/監考/播放聽力 → 改卷訂正 → 貼聯絡單(H1要釘作業)發聯絡簿 → 關螢幕電源/冷氣/燈 → 點名本放回原來的櫃子（重要） (文具/膠水/筆我都放在櫃子裡那一袋 釘書機(粉紅色)在教室的筆筒裡 釘書針不夠旁邊都有。)</p>
+      <div class="chips">
+        <div class="chip">✅ 不用教新課</div>
+        <div class="chip">⏰ H1 15:30–16:30</div>
+        <div class="chip">⏰ H3 16:30–18:30</div>
+        <div class="chip">🚨 點名本放回原位</div>
+      </div>
+    </section>
 
-    <div id="result" class="result"></div>
-    <div id="warn" class="warn"></div>
+    <main>
+      <!-- ======== 你的內容（完全不刪減）開始 ======== -->
+
+      <section id="location" class="card" style="margin-top:18px;">
+        <h3>地點</h3>
+        <p style="color:var(--muted); margin-top:0;">
+          📍
+          <a href="https://www.google.com/maps?um=1&ie=UTF-8&fb=1&gl=tw&sa=X&geocode=Kdlb8WmUNWg0MaalhwKc7O1y&daddr=300%E6%96%B0%E7%AB%B9%E5%B8%82%E5%8C%97%E5%8D%80%E5%9B%9B%E7%B6%AD%E8%B7%AF77%E8%99%9F"
+             target="_blank" rel="noopener">
+            徐薇英文－瀚銘分校（點我開地圖）
+          </a>
+        </p>
+      </section>
+
+      <section id="steps" class="card" style="margin-top:18px;">
+        <h3>代課步驟</h3>
+        <p class="meta">照這份做就能順利完成：先拿點名本 → 上二樓 → 教室外櫃子拿文具考卷</p>
+
+        <div class="steps">
+          <div class="step">
+            <h4>Step 1｜到櫃台後方櫃子拿點名本</h4>
+            <ol>
+              <li>直接到櫃台，走到櫃台後面的櫃子找「點名本」。</li>
+              <li>點名本有兩本：<b>H1</b> 跟 <b>H3</b>。</li>
+              <li>如果不確定位置：直接問櫃台老師「點名本在哪裡？」並說你是<b>代課老師</b>。</li>
+            </ol>
+
+            <div class="note">
+              ✅ 小提醒：確認這堂課是 H1 還是 H3（避免點錯名）。
+            </div>
+
+            <div class="divider"></div>
+            <h4 style="margin-top:0;">點名本示意（放照片在這）</h4>
+            <div class="gallery">
+              <img src="images/IMG1058.jpg" alt="點名本樣子（H1 / H3）">
+              <img src="images/IMG1059.jpg" alt="點名本樣子（H1 / H3）">
+              <img src="images/IMG1061.jpg" alt="櫃台後櫃子位置">
+            </div>
+          </div>
+
+          <div class="step">
+            <h4>Step 2｜走後面樓梯上二樓 → 右轉第一間教室</h4>
+            <ol>
+              <li>往後面樓梯走到<b>二樓</b>。</li>
+              <li>到二樓後<b>右轉</b>，<b>第一間</b>就是教室。</li>
+              <li>教室外面的櫃子會放<b>所有上課需要的東西</b>（文具、考卷、聯絡單）。</li>
+            </ol>
+
+            <div class="warn">
+              ⚠️ 進教室前：先看門口或櫃子標示，確認班級/時段沒走錯。
+            </div>
+
+            <div class="divider"></div>
+            <h4 style="margin-top:0;">教室與櫃子（放照片/影片在這）</h4>
+            <div class="gallery">
+               <img src="images/IMG_1054.jpg" alt="櫃子位置">
+            </div>
+
+            <div class="videoWrap" style="margin-top:12px;">
+              <div class="ratio">
+                <!-- 如果你有 YouTube 影片，把影片ID換掉 -->
+                <iframe
+                  src="https://www.youtube.com/embed/If-zzSrj-90"
+                  title="代課路線/用品位置示範"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen>
+                </iframe>
+              </div>
+            </div>
+            <p style="margin-top:10px; color:var(--muted);">
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="schedule" class="card" style="margin-top:18px;">
+        <h3>這次代課課表與時間安排</h3>
+        <p class="meta">先看時間表，心裡有底就不會慌 👍</p>
+
+        <div class="twoCol">
+          <div class="step">
+            <h4>H1 班</h4>
+            <ul style="margin:8px 0 0; padding-left:18px; color:var(--muted);">
+              <li>⏰ 上課時間：<b>15:30 – 16:30</b></li>
+              <li>👩‍🏫 備註：<b>14:30 – 15:30</b> 由外師上課</li>
+            </ul>
+
+            <div class="note">
+              📌 重要提醒：<br>
+              你一上到教室時，<b>裡面會有老師正在上課</b>，這是正常的，不要嚇到。<br>
+              在門口等外師下課後，再進教室即可。
+            </div>
+          </div>
+
+          <div class="step">
+            <h4>H3 班</h4>
+            <ul style="margin:8px 0 0; padding-left:18px; color:var(--muted);">
+              <li>⏰ 上課時間：<b>16:30 – 18:30</b></li>
+              <li>☕ 中間休息：<b>10 分鐘下課</b></li>
+            </ul>
+
+            <div class="note">
+              📌 建議做法：<br>
+              下課 10 分鐘時，先讓學生休息，<br>
+              可以休息一下或貼聯絡單。
+            </div>
+          </div>
+        </div>
+
+        <div class="warn" style="margin-top:12px;">
+          ⚠️ 小總結：<br>
+          ・先等外師課結束再進教室<br>
+        </div>
+      </section>
+
+      <section id="content" class="card" style="margin-top:18px;">
+        <h3>課程內容</h3>
+        <p class="meta">重點先講清楚：不用教課，只要照流程走 👍</p>
+
+        <div class="note">
+          ✅ 這次代課<b>我都有安排考試</b><br>
+          ➜ 不需要備課、不需要講解文法或單字<br>
+          ➜ 主要工作就是：發考卷、看學生、收考卷
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <h4>上課時你要做的事</h4>
+            <ol>
+              <li>學生到齊後點名，叫他們交聯絡簿
+              <li>發考卷給學生。</li>
+              <li>簡單說明考試時間與規則（不要聊天、不要看別人）。</li>
+              <li>考試期間注意秩序即可(可以順便貼聯絡單)。</li>
+              <li>時間到後請學生交卷。</li>
+              <li>改考卷請學生訂正。
+            </ol>
+          </div>
+
+      <section id="common-flow" class="card" style="margin-top:18px;">
+        <h3>每一班開始上課的固定流程（一定要做）</h3>
+        <p class="meta">不管 H1 還是 H3，都先照這個順序走</p>
+
+        <div class="steps">
+          <div class="step">
+            <h4>① 先拿點名本點名＋簽名</h4>
+            <ol>
+              <li>一進教室後，第一件事就是拿出點名本。</li>
+              <li>照點名本順序點名學生。</li>
+              <li>點名完成後，在點名本上<b>簽名</b>。</li>
+            </ol>
+
+            <div class="note">
+              📹 點名本操作方式：<br>
+              點名本的使用方式在影片裡講得<b>非常詳細</b>，照影片做就可以，不用擔心。
+            </div>
+          </div>
+
+<div class="videoWrap" style="margin-top:12px;">
+              <div class="ratio">
+                <!-- 如果你有 YouTube 影片，把影片ID換掉 -->
+                <iframe
+                  src="https://www.youtube.com/embed/9tX2Os3Z-4c"
+                  title="點名本及聯絡單說明"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen>
+                </iframe>
+              </div>
+            </div>
+            <p style="margin-top:10px; color:var(--muted);">
+                          </p>
+          </div>
+        </div>
+      </section>
+
+
+          <div class="step">
+            <h4>② 請學生交聯絡簿</h4>
+            <ol>
+              <li>點名完後，直接請學生把<b>聯絡簿交上來</b>。</li>
+              <li>聯絡單不用馬上貼，可以趁<b>監考期間</b>處理。</li>
+              <li>建議時間：
+                <ul style="margin:6px 0 0; padding-left:18px;">
+                  <li>下課前 <b>10 分鐘</b></li>
+                  <li>或任何你有空檔的時間，趕快貼一貼即可</li>
+                </ul>
+              </li>
+            </ol>
+
+            <div class="note">
+              ✅ 小技巧：<br>
+              監考時學生都在寫考卷，是貼聯絡單最不被打擾的時候。
+            </div>
+          </div>
+        </div>
+
+        <div class="warn" style="margin-top:12px;">
+          ⚠️ 重點提醒：<br>
+          ・每一班「一開始一定要先點名＋簽名」<br>
+          ・聯絡簿不用急，找空檔處理即可
+        </div>
+      </section>
+
+      <section id="h1-detail" class="card" style="margin-top:18px;">
+        <h3>H1 班｜詳細流程（15:30–16:30）</h3>
+        <p class="meta">重點：小張考試卷＋聽力照答案卷唸＋訂正＋聯絡簿要釘作業</p>
+
+        <div class="steps">
+          <div class="step">
+            <h4>1）考前 3–5 分鐘快速複習（可做可不做，但做了比較順）</h4>
+            <ol>
+              <li>考的是<b>「小張考試卷」</b>（前面櫃子影片有說是哪一張）。</li>
+              <li>可以直接看考卷內容幫他們複習：
+                <ul style="margin:6px 0 0; padding-left:18px; color:var(--muted);">
+                  <li>你用<b>中文提問</b>，叫他們用<b>英文回答</b></li>
+                  <li>他們通常不會（正常）➡️ 你就<b>直接唸英文</b>，叫他們<b>跟著複誦一次</b></li>
+                </ul>
+              </li>
+            </ol>
+          </div>
+
+          <div class="step">
+            <h4>2）開始考試：安排座位 → 發卷 → 寫名字 → 進行聽力</h4>
+            <ol>
+              <li>叫他們坐<b>考試位置</b>，重點是<b>不要坐在一起</b>。</li>
+              <li>發「考試卷一張」，請他們先<b>寫名字</b>。</li>
+              <li>考試內容都是<b>聽力</b>：照<b>你的答案卷</b>上的內容唸給他們聽。</li>
+              <li>每題可以唸 <b>3–4 次</b>，<b>慢一點</b>、清楚一點。</li>
+            </ol>
+
+            <div class="warn">
+              ⚠️ 班級秩序：<br>
+              如果他們開始講話或偷看，直接<b>嚴格一點沒問題</b>（他們考試很愛講話發出聲音 直接罵就好）。
+            </div>
+          </div>
+
+          <div class="step">
+            <h4>3）收卷 → 改考卷 → 叫名字訂正</h4>
+            <ol>
+              <li>考完先<b>收考卷</b>，請他們<b>坐好不要吵</b>。</li>
+              <li>你開始改考卷 扣分都是一題兩分（他們會吵很正常，直接壓住秩序就好 兇起來）。</li>
+              <li>改完一張就<b>叫名字</b>，讓他來拿考卷並開始<b>訂正</b>。</li>
+              <li>訂正方式：
+                <ul style="margin:6px 0 0; padding-left:18px; color:var(--muted);">
+                  <li>他們自己找答案</li>
+                  <li>錯的<b>罰寫兩次</b></li>
+                  <li>很多人會發呆 ➜ 看到沒訂正的就直接提醒/罵一下（不然會拖很久）</li>
+                </ul>
+              </li>
+              <li>訂正完：用<b>藍筆打勾</b>，考卷讓他們<b>自己收著</b>。</li>
+            </ol>
+
+            <div class="note">
+              ✅ 如果流程跑很快：可以讓他們玩遊戲，但<b>不要太早放</b>，不然後面會很吵很難收。考試96分以上的我會給獎勵，但我怕你會很混亂所以你跟他們說等我回來再跟我拿獎勵 
+            </div>
+          </div>
+
+          <div class="step">
+            <h4>4）H1 超重要：聯絡簿除了貼聯絡單，還要「釘作業」</h4>
+            <ol>
+              <li>聯絡簿要做兩件事：
+                <ul style="margin:6px 0 0; padding-left:18px; color:var(--muted);">
+                  <li>✅ 貼聯絡單</li>
+                  <li>✅ <b>釘作業</b>在上面</li>
+                </ul>
+              </li>
+              <li>作業是：<b>H1 Lesson 3 review worksheet</b>（放在櫃子那邊，下面會放圖）。</li>
+              <li>釘作業記得：<b>釘兩個</b>（不然很容易掉）。</li>
+              <li>把聯絡簿發回給學生後，就可以準備下課。</li>
+            </ol>
+
+            <div class="warn">
+              ⏱️ 下課時間：可以提早 <b>2–3 分鐘</b>下課，但不要拖到，避免家長在等。
+            </div>
+
+            <div class="divider"></div>
+            <h4 style="margin-top:0;">作業示意（放圖片在這）</h4>
+            <div class="gallery">
+              <img src="images/worksheet.png" alt="worksheet">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="h3-detail" class="card" style="margin-top:18px;">
+        <h3>H3 班｜詳細流程（16:30–18:30）</h3>
+        <p class="meta">重點：期末考（大份）＋先釘兩釘＋大螢幕播音檔（兩次）＋改完把分數填到聯絡單</p>
+
+        <div class="steps">
+          <div class="step">
+            <h4>0）考前準備（先把考卷釘好）</h4>
+            <ol>
+              <li>H3 考的是<b>期末考</b>，份量比較大（考卷一樣在櫃子）。</li>
+              <li>發考卷之前，請先在每份考卷上<b>釘兩個釘書針</b>（避免散掉）。</li>
+            </ol>
+            <div class="note">✅ 建議：釘考卷可以在學生坐定位前快速完成。</div>
+          </div>
+
+          <div class="step">
+            <h4>1）16:40 開始考試：安排座位 → 發卷 → 寫名字</h4>
+            <ol>
+              <li><b>16:40</b> 開始考試。</li>
+              <li>叫他們坐<b>考試位置</b>（不要坐在一起）。</li>
+              <li>發期末考考卷，先請他們<b>寫名字</b>。</li>
+            </ol>
+          </div>
+
+          <div class="step">
+            <h4>2）聽力：用大螢幕播音檔（放兩次）＋部分大題要你唸</h4>
+            <ol>
+              <li>聽力音檔要用<b>大螢幕</b>播放（下面會放影片示範）(如果前面外師已經進入徐薇英文你只要按back或exit回目錄就好 要是外師沒先開螢幕 下面有開機教學)。</li>
+              <li>音檔每段<b>放兩次</b>。</li>
+              <li>有幾個<b>大題沒有音檔</b>，但還是要唸給他們聽（我有寫在答案卷上）。</li>
+            </ol>
+
+            <div class="note">
+              📝 貼聯絡單時機：<br>
+              他們在聽音檔時，你可以趁機<b>趕快貼聯絡單</b>（最不會被打擾）。
+            </div>
+
+           <div class="videoWrap" style="margin-top:12px;">
+  <div class="ratio">
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/YHwQF6zx0Ro"
+      title="H3 期末考音檔播放示範"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+<div class="videoWrap" style="margin-top:12px;">
+  <div class="ratio">
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/xzBI0PeZ4So"
+      title="H3 期末考音檔播放示範"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+            <p style="margin-top:10px; color:var(--muted);">
+                          </p>
+          </div>
+
+          <div class="step">
+            <h4>3）收卷 → 改考卷（分數要記得填到聯絡單）</h4>
+            <ol>
+              <li>考完先<b>收考卷</b>，請他們<b>坐在位置上安靜</b>。</li>
+              <li>開始改考卷。</li>
+              <li>因為聯絡單上會寫<b>期末考分數</b>：改完後記得<b>把分數填上去</b>。</li>
+            </ol>
+
+            <div class="warn">
+              ⚠️ 班級秩序：<br>
+              他們如果太吵，直接壓住就好。該兇就兇（H3 也很欠罵）。
+            </div>
+          </div>
+
+          <div class="step">
+            <h4>4）訂正（會花很久）＋特別注意 Cyrus / Daniel</h4>
+            <ol>
+              <li>改完後叫他們開始<b>訂正</b>。</li>
+              <li>通常會訂正很久，正常。</li>
+              <li><b>Cyrus</b>、<b>Daniel</b> 這兩個比較搞，特別注意他們有沒有在訂正。</li>
+            </ol>
+
+            <div class="note">
+              ☕ 休息 10 分鐘（彈性）：<br>
+              你可以看狀況讓他們休息 <b>10 分鐘</b>，以你為主。<br>
+              如果他們太欠罵、不想讓他們下課也可以（你決定）。
+            </div>
+          </div>
+
+          <div class="step">
+            <h4>5）收尾：聯絡簿發完＋若提前完成就遊戲（太吵就立刻收）</h4>
+            <ol>
+              <li>訂正完成、聯絡簿都發完後，如果還沒到 <b>18:30</b>，可以讓他們玩遊戲。</li>
+              <li>如果太吵：直接叫他們<b>回位置坐好</b>，必要時<b>開罵</b>（不然你會很痛苦）。</li>
+              <li>下課：可以提早 <b>2–3 分鐘</b>或準時下課，但<b>不要拖到時間</b>。</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section id="wrap-up" class="card" style="margin-top:18px;">
+        <h3>下課後收尾流程（做完就可以走人）</h3>
+        <p class="meta">全部完成再離開，避免後續麻煩</p>
+
+        <div class="steps">
+          <div class="step">
+            <h4>1）關螢幕（照影片操作）</h4>
+            <ol>
+              <li>下課後先把<b>教室螢幕關掉</b>。</li>
+              <li>操作方式請直接照<b>下面影片</b>做即可。</li>
+            </ol>
+
+            <div class="videoWrap" style="margin-top:12px;">
+              <div class="ratio">
+                <!-- 把影片ID換成你的「關螢幕教學」影片 -->
+                <iframe
+                  src="https://www.youtube.com/embed/NyoQMlOtuxs"
+                  title="關螢幕教學"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen>
+                </iframe>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <h4>2）物品歸位＋關冷氣與燈</h4>
+            <ol>
+              <li>把<b>我的文具</b>全部放回櫃子原位。</li>
+              <li>檢查並關掉：
+                <ul style="margin:6px 0 0; padding-left:18px; color:var(--muted);">
+                  <li>冷氣</li>
+                  <li>燈</li>
+                  <li>其他電源（有看到就關）</li>
+                </ul>
+              </li>
+            </ol>
+          </div>
+
+          <div class="step">
+            <h4>3）⚠️ 點名本放回原來的櫃子（非常重要）</h4>
+            <ol>
+              <li>確認 <b>H1</b>、<b>H3</b> 兩本點名本都在。</li>
+              <li>把兩本點名本<b>放回櫃台後方原來的櫃子</b>。</li>
+            </ol>
+
+            <div class="warn">
+              🚨 重要提醒：<br>
+              點名本<b>一定要放回原來的櫃子</b>，<br>
+              這件事比什麼都重要，不要帶走、不要亂放。
+            </div>
+          </div>
+        </div>
+
+        <div class="note" style="margin-top:12px;">
+          ✅ 以上都完成後，就可以安心走人了。
+        </div>
+      </section>
+
+      <!-- ======== 你的內容（完全不刪減）結束 ======== -->
+    </main>
+
+    <footer>
+      © <span id="year"></span> 代課指南｜做完收尾就走人（點名本放回原位！）
+    </footer>
   </div>
 
-  <div class="dock">
-    <div class="dock-inner">
-      <button class="btn primary" id="submitBtn">提交算分</button>
-      <button class="btn" id="shareBtn" disabled>分享結果</button>
-      <button class="btn small" id="resetBtn">重設</button>
-    </div>
-  </div>
+  <button class="toplink" onclick="window.scrollTo({top:0, behavior:'smooth'})">回到頂部 ↑</button>
 
   <script>
-    // category 用來做稱號：看你最強/最弱是哪種「群組技能」
-    const quizData = [
-      // —— 行程／群組日常 ——
-      { title:"1️⃣ 這個群組一開始最像在做什麼？",
-        options:["一次就決定好行程","討論很久但永遠差一步","只分享貼圖","只在爆破"],
-        correctIndex:1, category:"決策" },
-
-      { title:"2️⃣ 「炸裂首爾爆破局」這名字最貼近的原因？",
-        options:["大家很冷靜","行程與價格每天都在爆","只是覺得可愛","有人手滑改名"],
-        correctIndex:1, category:"八卦" },
-
-      { title:"3️⃣ 群組最常見的關鍵字是哪句？",
-        options:["那就這樣定囉","我都可以","大家理性一點","明天再說"],
-        correctIndex:1, category:"人物" },
-
-      { title:"4️⃣ 最常導致「今天又沒結論」的狀況？",
-        options:["有人開始算錢","有人突然消失","有人改口","以上皆是"],
-        correctIndex:3, category:"決策" },
-
-      // —— 機票地獄（細節型）——
-      { title:"5️⃣ 看機票時最容易出現的情緒組合是？",
-        options:["冷靜＋理性","期待＋幸福","焦慮＋不甘心","毫無波瀾"],
-        correctIndex:2, category:"情緒" },
-
-      { title:"6️⃣ 誰被說「你很勇」？（因為下單太快）",
-        options:["林珮玟","范辰于","庭語","姵蓁"],
-        correctIndex:1, category:"機票" },
-
-      { title:"7️⃣ 「幹他不讓我按」這句是在說什麼？",
-        options:["官網當機","付款卡住","訂位按鈕按不了","選座位不能按"],
-        correctIndex:2, category:"機票" },
-
-      { title:"8️⃣ 誰說過「欸可以選座位欸」但下一秒發現要加錢？",
-        options:["品宸","庭語","范辰于","林珮玟"],
-        correctIndex:0, category:"機票" },
-
-      { title:"9️⃣ 看起來最「省到極致」的一句話是？",
-        options:["官網便宜兩塊錢哈哈哈哈","差幾百沒差啦","我們夜宿街頭","用眼睛逛"],
-        correctIndex:0, category:"機票" },
-
-      { title:"🔟 「華航官網 8521」是誰講的？",
-        options:["林珮玟","范辰于","品宸","庭語"],
-        correctIndex:1, category:"機票" },
-
-      { title:"1️⃣1️⃣ 誰說「我有里程可以抵」？",
-        options:["品宸","庭語","林珮玟","姵蓁"],
-        correctIndex:0, category:"機票" },
-
-      { title:"1️⃣2️⃣ 誰說「我在研究官網怎麼訂」？",
-        options:["姵蓁","庭語","范辰于","品宸"],
-        correctIndex:0, category:"機票" },
-
-      { title:"1️⃣3️⃣ 有人看錯機票城市，誤以為在看哪裡？",
-        options:["東京","福岡","大阪","釜山"],
-        correctIndex:2, category:"機票" },
-
-      { title:"1️⃣4️⃣ 「trip.com」在群組中被提到的用途是？",
-        options:["訂飯店","看景點","買機票可能比較便宜","買保險"],
-        correctIndex:2, category:"機票" },
-
-      { title:"1️⃣5️⃣ 「許霆與怎麼很安靜」這句是誰發的？",
-        options:["品宸","范辰于","庭語","姵蓁"],
-        correctIndex:0, category:"人物" },
-
-      { title:"1️⃣6️⃣ 被 @ 之後回「幹我剛諮商完」的是誰？",
-        options:["庭語","范辰于","林珮玟","姵蓁"],
-        correctIndex:0, category:"人物" },
-
-      { title:"1️⃣7️⃣ 「不要爆破我」是誰講的？",
-        options:["庭語","品宸","林珮玟","范辰于"],
-        correctIndex:0, category:"八卦" },
-
-      // —— 住宿比價地獄 ——
-      { title:"1️⃣8️⃣ 「我是 booking.com 版本的林佩雯的 agoda」是誰自嘲的？",
-        options:["品宸","范辰于","姵蓁","庭語"],
-        correctIndex:1, category:"住宿" },
-
-      { title:"1️⃣9️⃣ 「國旅在搞」是誰說的？",
-        options:["林珮玟","范辰于","庭語","劉珈彤"],
-        correctIndex:0, category:"住宿" },
-
-      { title:"2️⃣0️⃣ 「投影機好讚」這句是誰說的？",
-        options:["庭語","林珮玟","姵蓁","品宸"],
-        correctIndex:0, category:"住宿" },
-
-      { title:"2️⃣1️⃣ 有人看到價格「7287」嚇到，第一反應是？",
-        options:["這是一人一晚嗎","好便宜","快訂","是詐騙嗎"],
-        correctIndex:0, category:"住宿" },
-
-      { title:"2️⃣2️⃣ 誰說那個怪價格「可能是青旅」？",
-        options:["林珮玟","庭語","范辰于","姵蓁"],
-        correctIndex:0, category:"住宿" },
-
-      { title:"2️⃣3️⃣ 「我之前都隨便住 2.300 的青旅」是誰說的？",
-        options:["林珮玟","范辰于","庭語","姵蓁"],
-        correctIndex:0, category:"住宿" },
-
-      { title:"2️⃣4️⃣ 「我們突然一起訂然後我 agoda 價錢就飆上來了」是誰講的？",
-        options:["林珮玟","范辰于","品宸","庭語"],
-        correctIndex:0, category:"住宿" },
-
-      // —— 汗蒸幕/LOL/吃喝玩樂（八卦區）——
-      { title:"2️⃣5️⃣ 誰先說「我要汗蒸幕」？",
-        options:["庭語","姵蓁","范辰于","林珮玟"],
-        correctIndex:0, category:"行程" },
-
-      { title:"2️⃣6️⃣ 「我們要帶頭巾拍 reels」是誰提的？",
-        options:["庭語","林珮玟","姵蓁","品宸"],
-        correctIndex:0, category:"行程" },
-
-      { title:"2️⃣7️⃣ 「我要拿雞蛋打別人」是誰講的？",
-        options:["姵蓁","庭語","范辰于","品宸"],
-        correctIndex:0, category:"八卦" },
-
-      { title:"2️⃣8️⃣ 「LOL Park」被誰提出後，大家一度以為是遊樂園？",
-        options:["姵蓁提、林珮玟誤會","品宸提、范辰于誤會","庭語提、林珮玟誤會","范辰于提、姵蓁誤會"],
-        correctIndex:0, category:"八卦" },
-
-      { title:"2️⃣9️⃣ 誰說「我要去吃部隊鍋，冷冷的天很適合」？",
-        options:["范辰于","庭語","林珮玟","姵蓁"],
-        correctIndex:0, category:"行程" },
-
-      // —— 早操舞＋喝酒＋逛街（超內梗）——
-      { title:"3️⃣0️⃣ 看到「這是早操請參考」後，誰說「我要退出」？",
-        options:["劉珈彤","姵蓁","品宸","庭語"],
-        correctIndex:0, category:"舞蹈" },
-
-      { title:"3️⃣1️⃣ 群組決定要在哪裡跳那個「早操」？",
-        options:["飯店跟汗蒸幕","機場跟飯店","地鐵站跟便利商店","LOL Park 裡面"],
-        correctIndex:0, category:"舞蹈" },
-
-      { title:"3️⃣2️⃣ 「我跟飯沉魚 笑死」是在約什麼？",
-        options:["喝酒","買機票","訂飯店","買保險"],
-        correctIndex:0, category:"酒精" },
-    ];
-
-    const quizEl = document.getElementById("quiz");
-    const resultEl = document.getElementById("result");
-    const warnEl = document.getElementById("warn");
-    const shareBtn = document.getElementById("shareBtn");
-
-    let lastScore = null;
-    let lastTitle = "";
-    let lastComment = "";
-
-    document.getElementById("chipCount").textContent = `題數：${quizData.length}`;
-
-    function renderQuiz(){
-      quizEl.innerHTML = "";
-      quizData.forEach((q, idx) => {
-        const card = document.createElement("section");
-        card.className = "card";
-        card.dataset.qindex = idx;
-
-        const head = document.createElement("div");
-        head.className = "q-head";
-
-        const title = document.createElement("p");
-        title.className = "q-title";
-        title.textContent = q.title;
-
-        const right = document.createElement("div");
-        const pill = document.createElement("div");
-        pill.className = "pill";
-        pill.textContent = "單選｜1 分";
-        right.appendChild(pill);
-
-        const sub = document.createElement("div");
-        sub.className = "subpill";
-        sub.textContent = `類型：${q.category}`;
-        right.appendChild(sub);
-
-        head.appendChild(title);
-        head.appendChild(right);
-        card.appendChild(head);
-
-        q.options.forEach((opt, oIdx) => {
-          const id = `q${idx}_o${oIdx}`;
-          const label = document.createElement("label");
-          label.className = "opt";
-          label.setAttribute("for", id);
-
-          const input = document.createElement("input");
-          input.type = "radio";
-          input.name = `q${idx}`;
-          input.id = id;
-          input.value = String(oIdx);
-
-          const text = document.createElement("div");
-          text.className = "opt-text";
-          text.textContent = opt;
-
-          label.appendChild(input);
-          label.appendChild(text);
-          card.appendChild(label);
-        });
-
-        const status = document.createElement("div");
-        status.className = "status";
-        status.id = `status_${idx}`;
-        card.appendChild(status);
-
-        quizEl.appendChild(card);
-      });
-    }
-
-    function clearMarks(){
-      document.querySelectorAll(".card").forEach(c => c.classList.remove("correct","wrong"));
-      document.querySelectorAll(".opt").forEach(o => o.classList.remove("correctAns","chosenWrong"));
-      document.querySelectorAll(".status").forEach(s => { s.style.display="none"; s.innerHTML=""; });
-      warnEl.style.display = "none";
-      warnEl.textContent = "";
-      resultEl.style.display = "none";
-      resultEl.innerHTML = "";
-      shareBtn.disabled = true;
-      lastScore = null;
-      lastTitle = "";
-      lastComment = "";
-    }
-
-    function getTierComment(score){
-      const n = quizData.length;
-      const pct = score / n;
-      if (pct >= 0.88) return "你不是記得，你是參與者；你連大家省 2 元都背得出來。";
-      if (pct >= 0.72) return "穩定輸出型友情：你可能潛水，但你都懂，還知道什麼時候該閉嘴。";
-      if (pct >= 0.50) return "友情旁觀者：梗懂一半，細節靠猜；但你笑點很準。";
-      return "你是不是把群組靜音？或你只負責已讀。";
-    }
-
-    function pickTopKey(map){
-      let bestKey = null, bestVal = -Infinity;
-      for (const [k,v] of Object.entries(map)){
-        if (v > bestVal){ bestVal = v; bestKey = k; }
-      }
-      return bestKey;
-    }
-
-    function buildPersonalTitle(score, catCorrect, catTotal){
-      // 最強類型：正確率最高（至少2題）
-      const rates = {};
-      for (const cat of Object.keys(catTotal)){
-        const t = catTotal[cat] || 0;
-        const c = catCorrect[cat] || 0;
-        if (t >= 2) rates[cat] = c / t;
-      }
-      const strongest = Object.keys(rates).length ? pickTopKey(rates) : pickTopKey(catCorrect);
-
-      // 最弱類型：正確率最低（至少2題）
-      let weakest = null;
-      if (Object.keys(rates).length){
-        let worstVal = Infinity;
-        for (const [k,v] of Object.entries(rates)){
-          if (v < worstVal){ worstVal = v; weakest = k; }
-        }
-      }
-
-      // 主稱號（分數）
-      const pct = score / quizData.length;
-      let main = "";
-      if (pct >= 0.90) main = "💎 爆破局核心董事";
-      else if (pct >= 0.78) main = "🔥 核心爆破成員";
-      else if (pct >= 0.62) main = "🫧 穩定在線觀察員";
-      else if (pct >= 0.48) main = "👀 友情旁觀人類";
-      else main = "🔕 靜音潛水傳說";
-
-      // 類型後綴
-      const suffixMap = {
-        "機票": "｜官網省 2 元派",
-        "住宿": "｜青旅公寓篩選器",
-        "酒精": "｜約喝但人不在的人",
-        "舞蹈": "｜汗蒸幕早操領舞",
-        "行程": "｜部隊鍋雷達",
-        "情緒": "｜焦慮同步器",
-        "決策": "｜拖延決策王",
-        "人物": "｜點名踹共專員",
-        "八卦": "｜內梗採集員",
-      };
-      const strongSuffix = suffixMap[strongest] || "｜內建爆破力";
-      const weakHint = weakest ? `（但你在「${weakest}」容易失手）` : "";
-
-      return { title: `${main} ${strongSuffix}`, strongest, weakest, weakHint };
-    }
-
-    function grade(){
-      clearMarks();
-
-      const unanswered = [];
-      quizData.forEach((q, idx) => {
-        const checked = document.querySelector(`input[name="q${idx}"]:checked`);
-        if (!checked) unanswered.push(idx + 1);
-      });
-
-      if (unanswered.length){
-        warnEl.style.display = "block";
-        warnEl.textContent = `你還沒答完：第 ${unanswered.join(", ")} 題（每題都要勾選才會算分）`;
-        warnEl.scrollIntoView({ behavior: "smooth", block:"start" });
-        return;
-      }
-
-      let score = 0;
-      const catTotal = {};
-      const catCorrect = {};
-      quizData.forEach(q => { catTotal[q.category] = (catTotal[q.category] || 0) + 1; });
-
-      quizData.forEach((q, idx) => {
-        const checked = document.querySelector(`input[name="q${idx}"]:checked`);
-        const chosen = Number(checked.value);
-
-        const card = document.querySelector(`.card[data-qindex="${idx}"]`);
-        const status = document.getElementById(`status_${idx}`);
-
-        // 標記正確答案
-        const correctId = `q${idx}_o${q.correctIndex}`;
-        const correctLabel = document.querySelector(`label[for="${correctId}"]`);
-        correctLabel.classList.add("correctAns");
-
-        if (chosen === q.correctIndex){
-          score += 1;
-          catCorrect[q.category] = (catCorrect[q.category] || 0) + 1;
-          card.classList.add("correct");
-          status.style.display = "block";
-          status.innerHTML = `✅ 你答對了 <span class="tag good">+1</span><br>
-            <strong>正確答案：</strong>${q.options[q.correctIndex]}`;
-        } else {
-          card.classList.add("wrong");
-          const chosenId = `q${idx}_o${chosen}`;
-          const chosenLabel = document.querySelector(`label[for="${chosenId}"]`);
-          chosenLabel.classList.add("chosenWrong");
-          status.style.display = "block";
-          status.innerHTML = `❌ 你答錯了 <span class="tag bad">+0</span><br>
-            <strong>你選的：</strong>${q.options[chosen]}<br>
-            <strong>正確答案：</strong>${q.options[q.correctIndex]}`;
-        }
-      });
-
-      const tierComment = getTierComment(score);
-      const { title, strongest, weakest, weakHint } = buildPersonalTitle(score, catCorrect, catTotal);
-
-      const distLines = Object.keys(catTotal).map(cat => {
-        const c = catCorrect[cat] || 0;
-        const t = catTotal[cat] || 0;
-        const pct = Math.round((c/t)*100);
-        return `• ${cat}：${c}/${t}（${pct}%）`;
-      }).join("<br>");
-
-      lastScore = score;
-      lastTitle = title;
-      lastComment = tierComment;
-
-      resultEl.style.display = "block";
-      resultEl.innerHTML = `
-        <div class="score">你的分數：${score} / ${quizData.length}</div>
-        <div class="titleline">你的稱號：${title}</div>
-        <p class="comment">${tierComment}</p>
-        <p class="mini" style="margin-top:10px;">
-          你最強的類型：<b>${strongest || "（無）"}</b> ${weakHint}
-        </p>
-        <div class="mini" style="margin-top:10px; line-height:1.6;">
-          <b>類型命中率</b><br>${distLines}
-        </div>
-        <p class="mini" style="margin-top:10px;">已顯示每題「你選的」與「正確答案」。</p>
-      `;
-      resultEl.scrollIntoView({ behavior: "smooth", block:"start" });
-      shareBtn.disabled = false;
-    }
-
-    async function shareResult(){
-      if (lastScore === null) return;
-      const text =
-`💥炸裂首爾爆破局友情大測驗（八卦加強版）💥
-分數：${lastScore}/${quizData.length}
-稱號：${lastTitle}
-評語：${lastComment}
-（不准翻群、不准事後爆破）`;
-
-      if (navigator.share){
-        try{ await navigator.share({ title: "友情大測驗成績", text }); return; }
-        catch(_) {}
-      }
-      try{
-        await navigator.clipboard.writeText(text);
-        const btn = document.getElementById("shareBtn");
-        btn.textContent = "已複製！";
-        setTimeout(()=> btn.textContent = "分享結果", 1200);
-      }catch(e){
-        alert("此瀏覽器不支援自動分享/複製，請手動複製：\n\n" + text);
-      }
-    }
-
-    function resetAll(){
-      document.querySelectorAll('input[type="radio"]').forEach(i => i.checked = false);
-      clearMarks();
-      window.scrollTo({ top:0, behavior:"smooth" });
-    }
-
-    document.getElementById("submitBtn").addEventListener("click", grade);
-    document.getElementById("resetBtn").addEventListener("click", resetAll);
-    document.getElementById("shareBtn").addEventListener("click", shareResult);
-
-    renderQuiz();
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
